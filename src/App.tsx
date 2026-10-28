@@ -7,12 +7,12 @@ import { useDocumentStore } from './hooks/useDocumentStore';
 import { Citation } from './types';
 
 export default function App() {
-  const { documents, activeDocIds, toggleActive } = useDocumentStore();
+  const { documents, activeDocIds, toggleActive, isFirebaseConnected } = useDocumentStore();
   const [activeCitation, setActiveCitation] = useState<Citation | null>(null);
 
   return (
     <div className="h-screen flex flex-col bg-canvas overflow-hidden">
-      <Navbar />
+      <Navbar isFirebaseConnected={isFirebaseConnected} />
       <div className="flex flex-1 overflow-hidden">
         <DocumentSidebar
           documents={documents}
