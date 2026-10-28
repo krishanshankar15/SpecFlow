@@ -25,7 +25,7 @@ export function CitationPanel({ citation, documents, onClose }: Props) {
           <div className="px-4 py-3 border-b border-border flex items-center justify-between">
             <div>
               <p className="text-xs font-mono text-muted uppercase tracking-widest">Citation [{citation.citationIndex}]</p>
-              <p className="text-sm font-mono text-cyan-DEFAULT font-semibold mt-0.5">
+              <p className="text-sm font-mono text-lime-DEFAULT font-semibold mt-0.5">
                 {citation.partNumber}
               </p>
             </div>
@@ -47,7 +47,7 @@ export function CitationPanel({ citation, documents, onClose }: Props) {
               </div>
               <p className="text-sm text-bright font-mono pl-5">{doc?.filename || citation.docId}</p>
 
-              <div className="flex items-center gap-4 pl-5 pt-1">
+              <div className="flex items-center gap-3 pl-5 pt-1 flex-wrap">
                 <div className="flex items-center gap-1.5 px-2 py-1 rounded-md bg-surface border border-border">
                   <Hash size={10} className="text-muted" />
                   <span className="text-xs font-mono text-dim">Page {citation.pageNumber}</span>
@@ -61,9 +61,9 @@ export function CitationPanel({ citation, documents, onClose }: Props) {
             </div>
 
             {/* Snippet */}
-            <div className="rounded-lg border border-emerald-DEFAULT/30 bg-emerald-glow p-3">
+            <div className="rounded-lg border border-lime-DEFAULT/20 bg-lime-glow p-3">
               <p className="text-[10px] font-mono text-muted uppercase tracking-wider mb-2">Matched Text</p>
-              <p className="text-xs font-mono text-emerald-DEFAULT leading-relaxed">"{citation.snippet}"</p>
+              <p className="text-xs font-mono text-lime-DEFAULT leading-relaxed">"{citation.snippet}"</p>
             </div>
 
             {/* Confidence */}
@@ -73,11 +73,12 @@ export function CitationPanel({ citation, documents, onClose }: Props) {
                   <CheckCircle2 size={10} />
                   <span>Extraction confidence</span>
                 </div>
-                <span className="text-emerald-DEFAULT">{(citation.confidence * 100).toFixed(1)}%</span>
+                <span className="text-lime-DEFAULT">{(citation.confidence * 100).toFixed(1)}%</span>
               </div>
               <div className="h-1 bg-border rounded-full overflow-hidden">
                 <motion.div
-                  className="h-full bg-emerald-DEFAULT rounded-full"
+                  className="h-full bg-lime-DEFAULT rounded-full"
+                  style={{ boxShadow: '0 0 8px rgba(170,255,0,0.4)' }}
                   initial={{ width: 0 }}
                   animate={{ width: `${citation.confidence * 100}%` }}
                   transition={{ duration: 0.5, ease: 'easeOut', delay: 0.1 }}
@@ -86,8 +87,8 @@ export function CitationPanel({ citation, documents, onClose }: Props) {
             </div>
 
             {/* PDF jump CTA */}
-            <button className="w-full flex items-center justify-center gap-2 px-3 py-2.5 rounded-lg border border-border hover:border-cyan-DEFAULT/50 hover:shadow-glow-cyan text-xs font-mono text-muted hover:text-cyan-DEFAULT transition-all duration-200 group">
-              <ExternalLink size={12} className="group-hover:rotate-12 transition-transform" />
+            <button className="w-full flex items-center justify-center gap-2 px-3 py-2.5 rounded-lg border border-border hover:border-lime-DEFAULT/30 hover:shadow-glow-lime-sm text-xs font-mono text-muted hover:text-lime-DEFAULT transition-all duration-200 group">
+              <ExternalLink size={12} className="group-hover:rotate-12 transition-transform duration-200" />
               Open Page {citation.pageNumber} in PDF
             </button>
           </div>

@@ -8,9 +8,9 @@ import clsx from 'clsx';
 
 const QUICK_ACTIONS = [
   { label: 'Absolute Max Ratings', icon: Zap, color: 'rose' },
-  { label: 'Pinout & GPIO', icon: Cpu, color: 'cyan' },
+  { label: 'Pinout & GPIO', icon: Cpu, color: 'lime' },
   { label: 'I²C / SPI Timing', icon: Clock, color: 'amber' },
-  { label: 'Compare Active ICs', icon: GitCompare, color: 'emerald' },
+  { label: 'Compare Active ICs', icon: GitCompare, color: 'lime' },
   { label: 'Power Consumption', icon: BarChart2, color: 'dim' },
 ] as const;
 
@@ -67,9 +67,9 @@ export function ChatConsole({ activeDocIds, documents, onCitationClick }: Props)
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.9 }}
-                className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-md bg-cyan-glow border border-cyan-DEFAULT/40 text-[10px] font-mono text-cyan-DEFAULT shadow-glow-cyan"
+                className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-md bg-lime-glow border border-lime-DEFAULT/30 text-[10px] font-mono text-lime-DEFAULT shadow-glow-lime-sm"
               >
-                <span className="w-1.5 h-1.5 rounded-full bg-cyan-DEFAULT animate-pulse-slow" />
+                <span className="w-1.5 h-1.5 rounded-full bg-lime-DEFAULT animate-pulse-slow" />
                 {doc.partNumber}
               </motion.span>
             ))
@@ -95,10 +95,9 @@ export function ChatConsole({ activeDocIds, documents, onCitationClick }: Props)
             onClick={() => setInput(label)}
             className={clsx(
               'flex items-center gap-1.5 px-3 py-1.5 rounded-lg border text-[11px] font-mono whitespace-nowrap transition-all duration-200 shrink-0',
-              color === 'rose' && 'border-rose-DEFAULT/30 text-rose-DEFAULT bg-rose-dim/20 hover:bg-rose-dim/40',
-              color === 'cyan' && 'border-cyan-DEFAULT/30 text-cyan-DEFAULT bg-cyan-glow hover:shadow-glow-cyan',
-              color === 'amber' && 'border-amber-DEFAULT/30 text-amber-DEFAULT bg-amber-dim/20 hover:bg-amber-dim/40',
-              color === 'emerald' && 'border-emerald-DEFAULT/30 text-emerald-DEFAULT bg-emerald-dim/20 hover:shadow-glow-emerald',
+              color === 'rose' && 'border-rose-DEFAULT/30 text-rose-DEFAULT bg-rose-dim/30 hover:bg-rose-dim/50',
+              color === 'lime' && 'border-lime-DEFAULT/25 text-lime-DEFAULT bg-lime-glow hover:shadow-glow-lime-sm',
+              color === 'amber' && 'border-amber-DEFAULT/30 text-amber-DEFAULT bg-amber-dim/30 hover:bg-amber-dim/50',
               color === 'dim' && 'border-border text-muted hover:border-border-bright hover:text-dim',
             )}
           >
@@ -110,7 +109,7 @@ export function ChatConsole({ activeDocIds, documents, onCitationClick }: Props)
 
       {/* Input */}
       <div className="px-4 pb-4 shrink-0">
-        <div className="flex items-end gap-2 bg-surface border border-border-bright rounded-xl p-3 focus-within:border-cyan-DEFAULT/50 focus-within:shadow-glow-cyan transition-all duration-300">
+        <div className="flex items-end gap-2 bg-surface border border-border-bright rounded-xl p-3 focus-within:border-lime-DEFAULT/40 focus-within:shadow-glow-lime-sm transition-all duration-300">
           <textarea
             ref={textareaRef}
             value={input}
@@ -127,7 +126,7 @@ export function ChatConsole({ activeDocIds, documents, onCitationClick }: Props)
             className={clsx(
               'w-8 h-8 rounded-lg flex items-center justify-center transition-all duration-200 shrink-0',
               input.trim()
-                ? 'bg-cyan-DEFAULT text-canvas shadow-glow-cyan'
+                ? 'bg-lime-DEFAULT text-canvas font-bold shadow-glow-lime-sm'
                 : 'bg-surface text-muted cursor-not-allowed'
             )}
           >

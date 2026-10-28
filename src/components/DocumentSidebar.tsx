@@ -14,8 +14,8 @@ function StatusDot({ status }: { status: DatasheetDocument['status'] }) {
   if (status === 'indexed') {
     return (
       <span className="relative flex h-2 w-2">
-        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-DEFAULT opacity-30" />
-        <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-DEFAULT" />
+        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-lime-DEFAULT opacity-25" />
+        <span className="relative inline-flex rounded-full h-2 w-2 bg-lime-DEFAULT" />
       </span>
     );
   }
@@ -32,7 +32,7 @@ function ProgressBar({ value }: { value: number }) {
   return (
     <div className="w-full h-0.5 bg-border rounded-full overflow-hidden mt-1.5">
       <motion.div
-        className="h-full bg-amber-DEFAULT rounded-full shimmer-bg"
+        className="h-full bg-lime-DEFAULT rounded-full shimmer-bg"
         initial={{ width: 0 }}
         animate={{ width: `${value}%` }}
         transition={{ duration: 0.6, ease: 'easeOut' }}
@@ -71,7 +71,7 @@ export function DocumentSidebar({ documents, activeDocIds, onToggle }: Props) {
           className={clsx(
             'border border-dashed rounded-lg p-4 text-center cursor-pointer transition-all duration-200 group',
             isDragging
-              ? 'border-cyan-DEFAULT bg-cyan-glow shadow-glow-cyan'
+              ? 'border-lime-DEFAULT bg-lime-glow shadow-glow-lime-sm'
               : 'border-border hover:border-border-bright hover:bg-surface/50'
           )}
         >
@@ -79,7 +79,7 @@ export function DocumentSidebar({ documents, activeDocIds, onToggle }: Props) {
             size={16}
             className={clsx(
               'mx-auto mb-2 transition-colors',
-              isDragging ? 'text-cyan-DEFAULT' : 'text-muted group-hover:text-dim'
+              isDragging ? 'text-lime-DEFAULT' : 'text-muted group-hover:text-dim'
             )}
           />
           <p className="text-xs text-muted group-hover:text-dim transition-colors">
@@ -108,16 +108,17 @@ export function DocumentSidebar({ documents, activeDocIds, onToggle }: Props) {
                   className={clsx(
                     'w-full text-left rounded-lg p-3 border transition-all duration-200 group relative overflow-hidden',
                     isActive && doc.status === 'indexed'
-                      ? 'border-cyan-DEFAULT/50 bg-cyan-glow shadow-glow-cyan'
+                      ? 'border-lime-DEFAULT/40 bg-lime-glow shadow-glow-lime-sm'
                       : 'border-border hover:border-border-bright bg-surface/30 hover:bg-surface/60',
-                    doc.status !== 'indexed' && 'opacity-60 cursor-not-allowed'
+                    doc.status !== 'indexed' && 'opacity-50 cursor-not-allowed'
                   )}
                 >
                   {/* Active indicator line */}
                   {isActive && (
                     <motion.div
                       layoutId={`active-line-${doc.id}`}
-                      className="absolute left-0 top-3 bottom-3 w-0.5 bg-cyan-DEFAULT rounded-r-full"
+                      className="absolute left-0 top-3 bottom-3 w-0.5 bg-lime-DEFAULT rounded-r-full"
+                      style={{ boxShadow: '0 0 8px rgba(170,255,0,0.5)' }}
                     />
                   )}
 
@@ -126,7 +127,10 @@ export function DocumentSidebar({ documents, activeDocIds, onToggle }: Props) {
                       <StatusDot status={doc.status} />
                     </div>
                     <div className="flex-1 min-w-0">
-                      <p className="font-mono text-xs font-semibold text-bright truncate">
+                      <p className={clsx(
+                        'font-mono text-xs font-semibold truncate transition-colors',
+                        isActive ? 'text-lime-DEFAULT' : 'text-bright'
+                      )}>
                         {doc.partNumber}
                       </p>
                       <p className="text-[10px] text-muted truncate mt-0.5">{doc.manufacturer}</p>
@@ -157,7 +161,7 @@ export function DocumentSidebar({ documents, activeDocIds, onToggle }: Props) {
                     </div>
 
                     {isActive && (
-                      <ChevronRight size={12} className="text-cyan-DEFAULT shrink-0 mt-0.5" />
+                      <ChevronRight size={12} className="text-lime-DEFAULT shrink-0 mt-0.5" />
                     )}
                   </div>
                 </button>

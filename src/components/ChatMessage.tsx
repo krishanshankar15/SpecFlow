@@ -7,7 +7,7 @@ function CitationBadge({ citation, onClick }: { citation: Citation; onClick: (c:
   return (
     <button
       onClick={() => onClick(citation)}
-      className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[10px] font-mono bg-emerald-dim border border-emerald-DEFAULT/30 text-emerald-DEFAULT hover:shadow-glow-emerald transition-all duration-200 ml-0.5"
+      className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[10px] font-mono bg-lime-glow border border-lime-DEFAULT/30 text-lime-DEFAULT hover:shadow-glow-lime-sm transition-all duration-200 ml-0.5"
     >
       [{citation.citationIndex}]
     </button>
@@ -54,11 +54,11 @@ function renderContent(content: string, citations: Citation[], onCitationClick: 
           </thead>
           <tbody>
             {tableLines.slice(1).map((row, ri) => (
-              <tr key={ri} className="border-b border-border/50 hover:bg-surface/40 transition-colors">
+              <tr key={ri} className="border-b border-border/50 hover:bg-surface/60 transition-colors">
                 {row.split('|').filter(Boolean).map((cell, ci) => (
                   <td key={ci} className={clsx(
                     'px-3 py-2',
-                    ci === 0 ? 'text-bright font-medium' : 'text-cyan-DEFAULT'
+                    ci === 0 ? 'text-bright font-medium' : 'text-lime-DEFAULT'
                   )}>
                     {cell.trim()}
                   </td>
@@ -94,8 +94,9 @@ export function ChatMessageBubble({ message, onCitationClick }: Props) {
       className={clsx('flex gap-3', isUser ? 'justify-end' : 'justify-start')}
     >
       {!isUser && (
-        <div className="w-7 h-7 rounded-lg bg-surface border border-border-bright flex items-center justify-center shrink-0 mt-0.5">
-          <span className="text-[10px] font-mono text-cyan-DEFAULT font-bold">SF</span>
+        <div className="w-7 h-7 rounded-lg bg-surface border border-border-bright flex items-center justify-center shrink-0 mt-0.5"
+          style={{ boxShadow: '0 0 0 1px rgba(170,255,0,0.15)' }}>
+          <span className="text-[10px] font-mono text-lime-DEFAULT font-bold">SF</span>
         </div>
       )}
 
@@ -115,7 +116,7 @@ export function ChatMessageBubble({ message, onCitationClick }: Props) {
         {/* Grounding footer for assistant */}
         {!isUser && message.groundingScore && (
           <div className="flex items-center gap-3 px-1">
-            <div className="flex items-center gap-1.5 text-[10px] font-mono text-emerald-DEFAULT">
+            <div className="flex items-center gap-1.5 text-[10px] font-mono text-lime-DEFAULT">
               <CheckCircle2 size={10} />
               <span>Grounding {Math.round(message.groundingScore * 100)}%</span>
             </div>

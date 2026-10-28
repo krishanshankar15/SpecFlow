@@ -11,11 +11,11 @@ export function Navbar() {
           animate={{ rotate: [0, 5, -5, 0] }}
           transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
         >
-          <Zap size={18} className="text-cyan-DEFAULT" strokeWidth={2.5} />
+          <Zap size={18} className="text-lime-DEFAULT" strokeWidth={2.5} />
         </motion.div>
         <span className="font-mono text-sm font-semibold tracking-tight">
           <span className="text-bright">Spec</span>
-          <span className="text-gradient-cyan">Flow</span>
+          <span className="text-gradient-lime">Flow</span>
         </span>
         <span className="text-muted text-xs font-mono">//</span>
         <span className="text-muted text-xs">hardware intelligence</span>
@@ -25,7 +25,7 @@ export function Navbar() {
 
       {/* Model selector */}
       <button className="flex items-center gap-1.5 px-2.5 py-1 rounded-md border border-border hover:border-border-bright text-xs font-mono text-dim hover:text-bright transition-all duration-200 group">
-        <span className="w-1.5 h-1.5 rounded-full bg-emerald-DEFAULT group-hover:shadow-[0_0_6px_rgba(16,185,129,0.8)] transition-shadow" />
+        <span className="w-1.5 h-1.5 rounded-full bg-lime-DEFAULT group-hover:shadow-[0_0_6px_rgba(170,255,0,0.7)] transition-shadow" />
         Gemini 1.5 Pro
         <ChevronDown size={12} className="text-muted" />
       </button>
